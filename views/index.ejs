@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>TOURHINT</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='description' content=''>
+    <meta name='author' content=''>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<header>
+    <div class='col'></div>
+    <div class='title'><span>曙光医院眼科</span></div>
+    <div class='col'></div>
+</header>
+<div class='container'>
+    <div class='tab active'>
+        <div class='page active'>
+            <div class='carousel'>
+                <div class='ad active'></div>
+                <div class='ad next'></div>
+                <div class='ad'></div>
+                <div class='ad'></div>
+                <div class='ad prev'></div>
+            </div>
+            <div class='menu'>
+                <div class='row'>
+                    <div class='col' data-target='page-doctor'></div>
+                    <div class='col'></div>
+                </div>
+                <div class='row'>
+                    <div class='col'></div>
+                    <div class='col'></div>
+                </div>
+                <div class='row'>
+                    <div class='col'></div>
+                    <div class='col'></div>
+                </div>
+            </div>
+        </div>
+        <div class='page' data-role='page-doctor'>
+            <div class='list-doctor'>
+                <div class='entry'></div>
+                <div class='entry'></div>
+                <div class='entry'></div>
+                <div class='entry'></div>
+                <div class='entry'></div>
+                <div class='entry'></div>
+            </div>
+        </div>
+    </div>
+    <div class='tab'></div>
+    <div class='tab'></div>
+    <div class='tab'></div>
+</div>
+<footer>
+    <div class='col active'></div>
+    <div class='col'></div>
+    <div class='col'></div>
+    <div class='col'></div>
+</footer>
+</body>
+<script src='/javascripts/jquery.min.js'></script>
+<script>
+    !function($) {
+        $('footer>.col').bind('click',function(e) {
+            var ele = $(this)
+                    , i = ele.index();
+            if (!ele.hasClass('active')) {
+                $(this).addClass('active').siblings().removeClass('active');
+                $('.tab').eq(i).addClass('active').siblings().removeClass('active');
+            }
+            e.preventDefault();
+        });
+        $('.menu>.row>.col').bind('click',function(e) {
+            var ref = $(this).attr('data-target'),
+                tar = $('.page[data-role='+ref+']');
+            if(ref&&!tar.hasClass('active')) {
+                $('footer').addClass('hidden');
+                tar.addClass('active').siblings().removeClass('active');
+            }
+            e.preventDefault();
+        });
+        setInterval(carousel,5000);
+    }(window.jQuery);
+    function carousel() {
+        var active = $('.carousel').find('.active'),
+            prev = active.prev().addClass('prev'),
+            next = active.next().addClass('next');
+        if(active.parents('.page').hasClass('active')) {
+            if(!prev.length>0){ prev = active.siblings().last() }
+            if(!next.length>0){ next = active.siblings().first() }
+
+            prev.removeClass('prev');
+            active.removeClass('active').addClass('prev');
+            next.removeClass('next').addClass('active');
+            if(!next.next().length>0){ active.siblings().first().addClass('next') } else { next.next().addClass('next') }
+        }
+    }
+</script>
+</html>

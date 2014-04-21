@@ -1,0 +1,206 @@
+/* VAR */
+/* CLASS */
+/* GLOBAL */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  font: 20px Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+}
+div {
+  box-sizing: border-box;
+}
+/* HEADER & FOOTER */
+header,
+footer {
+  position: fixed;
+  height: 10%;
+  width: 100%;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-appearance: none;
+  z-index: 10;
+}
+header {
+  display: table-cell;
+  background: #d95041;
+  top: 0;
+}
+header .col:first-child {
+  position: relative;
+  height: 100%;
+  width: 16%;
+  float: left;
+}
+header .col:last-child {
+  position: relative;
+  height: 100%;
+  width: 16%;
+  float: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-image: url('/images/more.svg');
+}
+header .title {
+  position: absolute;
+  height: 100%;
+  width: 68%;
+  display: table;
+  left: 16%;
+  color: #e6e6e6;
+}
+header .title span {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  letter-spacing: 0.1em;
+}
+footer {
+  background: #e6e6e6;
+  border-top: 1pt solid #808080;
+  bottom: 0;
+}
+footer.hidden {
+  bottom: -10%;
+  transition: bottom 0.2s ease;
+  -webkit-transition: bottom 0.2s ease;
+}
+footer .col {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+footer .col:first-child {
+  background-image: url('/images/home.svg');
+}
+footer .col:first-child.active {
+  background-image: url('/images/home-active.svg');
+}
+footer .col:nth-child(2) {
+  background-image: url('/images/surround.svg');
+}
+footer .col:nth-child(2).active {
+  background-image: url('/images/surround-active.svg');
+}
+footer .col:nth-child(3) {
+  background-image: url('/images/compass.svg');
+}
+footer .col:nth-child(3).active {
+  background-image: url('/images/compass-active.svg');
+}
+footer .col:nth-child(4) {
+  background-image: url('/images/here.svg');
+}
+footer .col:nth-child(4).active {
+  background-image: url('/images/here-active.svg');
+}
+/* PAGE */
+.tab {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background: #e6e6e6;
+}
+.tab.active {
+  display: block;
+}
+.tab .page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background: #e6e6e6;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+}
+.tab .page::-webkit-scrollbar {
+  width: 0 !important;
+}
+.tab .page.active {
+  display: block;
+}
+.tab .page .carousel {
+  position: absolute;
+  height: 35%;
+  width: 100%;
+  top: 10%;
+}
+.tab .page .carousel .ad {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  transition: left 0.2s ease;
+  -webkit-transition: left 0.2s ease;
+}
+.tab .page .carousel .ad:first-child {
+  background-image: url('/images/ad-1.jpg');
+}
+.tab .page .carousel .ad:nth-child(2) {
+  background-image: url('/images/ad-2.jpg');
+}
+.tab .page .carousel .ad:nth-child(3) {
+  background-image: url('/images/ad-3.jpg');
+}
+.tab .page .carousel .ad:nth-child(4) {
+  background-image: url('/images/ad-4.jpg');
+}
+.tab .page .carousel .ad:nth-child(5) {
+  background-image: url('/images/ad-5.jpg');
+}
+.tab .page .carousel .ad.active {
+  display: block;
+  left: 0;
+}
+.tab .page .carousel .ad.prev {
+  display: block;
+  left: -100%;
+}
+.tab .page .carousel .ad.next {
+  display: block;
+  left: 100%;
+}
+.tab .page .menu {
+  position: absolute;
+  height: 45%;
+  width: 100%;
+  top: 45%;
+}
+.tab .page .menu .row {
+  position: relative;
+  height: 33.33333333%;
+  width: 100%;
+}
+.tab .page .menu .row .col {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+.tab .page .list-doctor {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 10%;
+}
+.tab .page .list-doctor .entry {
+  height: 20%;
+  border-bottom: 1px solid #808080;
+}
+.tab .page .list-doctor .entry:last-child {
+  border-bottom: none;
+}
