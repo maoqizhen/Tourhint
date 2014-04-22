@@ -11,20 +11,20 @@
 </head>
 <body>
 <header>
-    <div class='col'></div>
+    <div class='col'><div class='icon-left' data-target='page-home'></div></div>
     <div class='title'><span>曙光医院眼科</span></div>
     <div class='col'></div>
 </header>
 <div class='container'>
     <div class='tab active'>
-        <div class='page active'>
-            <div class='carousel'>
-                <div class='ad active'></div>
-                <div class='ad next'></div>
-                <div class='ad'></div>
-                <div class='ad'></div>
-                <div class='ad prev'></div>
-            </div>
+        <div class='page active' data-role='page-home'>
+            <ul class='carousel'>
+                <li class='ad active'></li>
+                <li class='ad next'></li>
+                <li class='ad'></li>
+                <li class='ad'></li>
+                <li class='ad prev'></li>
+            </ul>
             <div class='menu'>
                 <div class='row'>
                     <div class='col' data-target='page-doctor'></div>
@@ -41,14 +41,44 @@
             </div>
         </div>
         <div class='page' data-role='page-doctor'>
-            <div class='list-doctor'>
-                <div class='entry'></div>
-                <div class='entry'></div>
-                <div class='entry'></div>
-                <div class='entry'></div>
-                <div class='entry'></div>
-                <div class='entry'></div>
-            </div>
+            <ul class='list-doctor'>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>缪晚虹</span><div class='annotation'><span class='admin'>主任医师</span><span class='academic'>博士生导师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>任建平</span><div class='annotation'><span class='admin'>副主任医师</span><span class='academic'>硕士生导师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>朱雅琴</span><div class='annotation'><span class='admin'>副主任医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>张明德</span><div class='annotation'><span class='admin'>副主任医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>邹红</span><div class='annotation'><span class='admin'>主治医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>俞莹</span><div class='annotation'><span class='admin'>主治医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>潘雅婕</span><div class='annotation'><span class='admin'>主治医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>赵峰</span><div class='annotation'><span class='admin'>住院医师</span></div></div></div>
+                </li>
+                <li class='entry'>
+                    <div class='col'><div class='thumbnail'></div></div>
+                    <div class='col right'><div class='text'><span>石晶玲</span><div class='annotation'><span class='admin'>住院医师</span></div></div></div>
+                </li>
+            </ul>
         </div>
     </div>
     <div class='tab'></div>
@@ -76,10 +106,21 @@
         });
         $('.menu>.row>.col').bind('click',function(e) {
             var ref = $(this).attr('data-target'),
-                tar = $('.page[data-role='+ref+']');
+                    tar = $('.page[data-role='+ref+']');
             if(ref&&!tar.hasClass('active')) {
                 $('footer').addClass('hidden');
+                tar.addClass('active').scrollTop(0).siblings().removeClass('active');
+                $('header>.col:first-child>.icon-left').addClass('active');
+            }
+            e.preventDefault();
+        });
+        $('header>.col:first-child>.icon-left').bind('click',function(e) {
+            var ref = $(this).attr('data-target'),
+                    tar = $('.page[data-role='+ref+']');
+            if(ref&&!tar.hasClass('active')) {
+                $('footer').removeClass('hidden');
                 tar.addClass('active').siblings().removeClass('active');
+                $('header>.col:first-child>.icon-left').removeClass('active');
             }
             e.preventDefault();
         });

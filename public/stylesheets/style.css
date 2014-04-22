@@ -13,6 +13,12 @@ body {
 div {
   box-sizing: border-box;
 }
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 /* HEADER & FOOTER */
 header,
 footer {
@@ -28,13 +34,26 @@ header {
   background: #d95041;
   top: 0;
 }
-header .col:first-child {
+header div.col:first-child {
   position: relative;
   height: 100%;
   width: 16%;
   float: left;
 }
-header .col:last-child {
+header div.col:first-child .icon-left {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-image: url('/images/back.svg');
+  display: none;
+}
+header div.col:first-child .icon-left.active {
+  display: block;
+}
+header div.col:last-child {
   position: relative;
   height: 100%;
   width: 16%;
@@ -44,7 +63,7 @@ header .col:last-child {
   background-position: center center;
   background-image: url('/images/more.svg');
 }
-header .title {
+header div.title {
   position: absolute;
   height: 100%;
   width: 68%;
@@ -52,7 +71,7 @@ header .title {
   left: 16%;
   color: #e6e6e6;
 }
-header .title span {
+header div.title span {
   text-align: center;
   display: table-cell;
   vertical-align: middle;
@@ -62,13 +81,13 @@ footer {
   background: #e6e6e6;
   border-top: 1pt solid #808080;
   bottom: 0;
-}
-footer.hidden {
-  bottom: -10%;
   transition: bottom 0.2s ease;
   -webkit-transition: bottom 0.2s ease;
 }
-footer .col {
+footer.hidden {
+  bottom: -10%;
+}
+footer div.col {
   position: relative;
   height: 100%;
   width: 25%;
@@ -77,42 +96,42 @@ footer .col {
   background-size: contain;
   background-position: center center;
 }
-footer .col:first-child {
+footer div.col:first-child {
   background-image: url('/images/home.svg');
 }
-footer .col:first-child.active {
+footer div.col:first-child.active {
   background-image: url('/images/home-active.svg');
 }
-footer .col:nth-child(2) {
+footer div.col:nth-child(2) {
   background-image: url('/images/surround.svg');
 }
-footer .col:nth-child(2).active {
+footer div.col:nth-child(2).active {
   background-image: url('/images/surround-active.svg');
 }
-footer .col:nth-child(3) {
+footer div.col:nth-child(3) {
   background-image: url('/images/compass.svg');
 }
-footer .col:nth-child(3).active {
+footer div.col:nth-child(3).active {
   background-image: url('/images/compass-active.svg');
 }
-footer .col:nth-child(4) {
+footer div.col:nth-child(4) {
   background-image: url('/images/here.svg');
 }
-footer .col:nth-child(4).active {
+footer div.col:nth-child(4).active {
   background-image: url('/images/here-active.svg');
 }
 /* PAGE */
-.tab {
+div.tab {
   position: fixed;
   height: 100%;
   width: 100%;
   display: none;
   background: #e6e6e6;
 }
-.tab.active {
+div.tab.active {
   display: block;
 }
-.tab .page {
+div.tab div.page {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -121,68 +140,70 @@ footer .col:nth-child(4).active {
   overflow-y: auto;
   overflow-x: hidden !important;
 }
-.tab .page::-webkit-scrollbar {
+div.tab div.page::-webkit-scrollbar {
   width: 0 !important;
 }
-.tab .page.active {
+div.tab div.page.active {
   display: block;
 }
-.tab .page .carousel {
+div.tab div.page ul.carousel {
   position: absolute;
   height: 35%;
   width: 100%;
   top: 10%;
 }
-.tab .page .carousel .ad {
+div.tab div.page ul.carousel li.ad {
   display: none;
   position: absolute;
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-position: center center;
+  background-position: center;
   transition: left 0.2s ease;
   -webkit-transition: left 0.2s ease;
 }
-.tab .page .carousel .ad:first-child {
+div.tab div.page ul.carousel li.ad:first-child {
   background-image: url('/images/ad-1.jpg');
 }
-.tab .page .carousel .ad:nth-child(2) {
+div.tab div.page ul.carousel li.ad:nth-child(2) {
   background-image: url('/images/ad-2.jpg');
 }
-.tab .page .carousel .ad:nth-child(3) {
+div.tab div.page ul.carousel li.ad:nth-child(3) {
   background-image: url('/images/ad-3.jpg');
 }
-.tab .page .carousel .ad:nth-child(4) {
+div.tab div.page ul.carousel li.ad:nth-child(4) {
   background-image: url('/images/ad-4.jpg');
 }
-.tab .page .carousel .ad:nth-child(5) {
+div.tab div.page ul.carousel li.ad:nth-child(5) {
   background-image: url('/images/ad-5.jpg');
 }
-.tab .page .carousel .ad.active {
+div.tab div.page ul.carousel li.ad.active {
   display: block;
   left: 0;
 }
-.tab .page .carousel .ad.prev {
+div.tab div.page ul.carousel li.ad.prev {
   display: block;
   left: -100%;
 }
-.tab .page .carousel .ad.next {
+div.tab div.page ul.carousel li.ad.next {
   display: block;
   left: 100%;
 }
-.tab .page .menu {
+div.tab div.page div.menu {
   position: absolute;
   height: 45%;
   width: 100%;
   top: 45%;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-appearance: none;
 }
-.tab .page .menu .row {
+div.tab div.page div.menu div.row {
   position: relative;
   height: 33.33333333%;
   width: 100%;
 }
-.tab .page .menu .row .col {
+div.tab div.page div.menu div.row div.col {
   position: relative;
   height: 100%;
   width: 50%;
@@ -191,16 +212,83 @@ footer .col:nth-child(4).active {
   background-size: contain;
   background-position: center center;
 }
-.tab .page .list-doctor {
+div.tab div.page ul.list-doctor {
   position: absolute;
   height: 100%;
   width: 100%;
   top: 10%;
 }
-.tab .page .list-doctor .entry {
+div.tab div.page ul.list-doctor li.entry {
+  position: relative;
   height: 20%;
+  width: 100%;
+}
+div.tab div.page ul.list-doctor li.entry::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  left: 5%;
   border-bottom: 1px solid #808080;
 }
-.tab .page .list-doctor .entry:last-child {
+div.tab div.page ul.list-doctor li.entry:last-child {
   border-bottom: none;
+}
+div.tab div.page ul.list-doctor li.entry div.col {
+  position: relative;
+  height: 100%;
+  width: 26%;
+  float: left;
+  left: 5%;
+}
+div.tab div.page ul.list-doctor li.entry div.col div.thumbnail {
+  position: absolute;
+  height: 62.5%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center left;
+  background-image: url('/images/thumbnail.jpg');
+  top: calc(18.75%);
+}
+div.tab div.page ul.list-doctor li.entry div.col div.thumbnail::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center left;
+  background-image: url('/images/thumbnailcover.svg');
+}
+div.tab div.page ul.list-doctor li.entry div.col.right {
+  position: relative;
+  height: 100%;
+  width: 64%;
+  float: left;
+  display: table;
+  color: #4d4d4d;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text {
+  display: table-cell;
+  vertical-align: middle;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text span {
+  font-size: 0.8em;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text div.annotation {
+  margin-top: 0.5em;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text div.annotation span {
+  color: #e6e6e6;
+  font-size: 0.6em;
+  border-radius: 0.2em;
+  padding: 0.5em;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text div.annotation span.academic {
+  background: #d99c41;
+  margin-left: 1em;
+}
+div.tab div.page ul.list-doctor li.entry div.col.right div.text div.annotation span.admin {
+  background: #4197d9;
 }
